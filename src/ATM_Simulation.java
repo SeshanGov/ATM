@@ -1,9 +1,11 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class ATM_Simulation {
 	
 	String[] userNames = {"seshan.govender@gmail.com", "keshini.chetty@gmail.com"};
 	String[] passwords = {"myPa$$word", "5e5hanG"};
+	String[] transactionOptions = {"1", "2", "3", "4", "quit"};
 	
 	public static void main(String[] args) {
 		System.out.println("Test");
@@ -23,6 +25,31 @@ public class ATM_Simulation {
 			return "Valid password. Logging in...";
 		}		
 		return "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
+	}
+
+	public String loadMainScreen() {
+		return "----------------------------------------\n"
+				+	" WELCOME TO THE ONLINE BANKING PLATFORM \n"
+				+ 	""
+				+ 	" - Press 1 if you would like to view your current balance."
+				+ 	" - Press 2 of you would like to withdraw cash from your account."
+				+ 	" - Press 3 if you would like to deposit cash into your account."
+				+ 	" - Press 4 if you would like to purchase airtime."
+				+ 	"\n Type 'quit' if you wish to cancel this transaction."
+				+	"----------------------------------------";
+	}
+
+	public String getUserInput() {
+
+		Scanner getUserInput = new Scanner(System.in);
+		String userInput = getUserInput.nextLine();
+		String outcome = "";
+		
+		if (Arrays.asList(transactionOptions).contains(userInput)) outcome = "Valid response";
+		else outcome = "Invalid response";
+		
+		getUserInput.close();
+		return outcome;
 	}
 
 }
