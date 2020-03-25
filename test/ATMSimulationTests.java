@@ -36,12 +36,17 @@ public class ATMSimulationTests {
 	}
 	
 	@Test
-	public void testCanFindPasswordInDatabase() {
-		testObject = new ATM_Simulation();
-		String desiredOutcome = "myPa$$word";
-		String result = testObject.locatePassword(desiredOutcome, testObject.passwords);
+	public void testCanFindAValidPasswordInDatabase() {
 		
+		testObject = new ATM_Simulation();
+		String userInput = "myPa$$word";
+		String desiredOutcome = userInput;
+		String result = testObject.locatePassword(userInput, testObject.passwords);
 		assertEquals(desiredOutcome, result);
+		
 	}
+	
+	
+	
 
 }
