@@ -65,5 +65,14 @@ public class ATMSimulationTests {
 		assertEquals(desiredOutcome, result);
 	}
 	
+	@Test
+	public void testUsernameAndPasswordIsNotForCorrectAccount() {
+		String userName = "seshan.govender@gmail.com";
+		String password = "";
+		String desiredOutcome = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
+		String result = testObject.locatePassword(userName, password, testObject.passwords);
+		assertEquals(desiredOutcome, result);
+	}
+	
 
 }

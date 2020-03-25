@@ -21,8 +21,7 @@ public class ATM_Simulation {
 		int passwordIndex = Arrays.asList(passwords).indexOf(passwordEntered);
 		if (userNameIndex == passwordIndex) {
 			return "Valid password. Logging in...";
-		}
-		
+		}		
 		return "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
 	}
 
