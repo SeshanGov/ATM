@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class ATM_Simulation {
 	
-	String[] userNames = {"seshan.govender@gmail.com"};
-	String[] passwords = {"myPa$$word"};
+	String[] userNames = {"seshan.govender@gmail.com", "keshini.chetty@gmail.com"};
+	String[] passwords = {"myPa$$word", "5e5hanG"};
 	
 	public static void main(String[] args) {
 		System.out.println("Test");
@@ -14,9 +16,11 @@ public class ATM_Simulation {
 		return "User not found";		
 	}
 
-	public String locatePassword(String userInput, String[] listOfPasswords) {
+	public String locatePassword(String userNameEntered, String passwordEntered, String[] listOfPasswords) {
+		int userNameIndex = Arrays.asList(userNames).indexOf(userNameEntered);
+		int passwordIndex = Arrays.asList(userNames).indexOf(passwordEntered);
 		for (String password : listOfPasswords) {
-			if (password.equals(userInput)) return userInput;
+			if (password.equals(passwordEntered) && userNameIndex == passwordIndex) return "Valid password. Logging in...";
 		}
 		return "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
 	}
