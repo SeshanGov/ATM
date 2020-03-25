@@ -38,19 +38,21 @@ public class ATMSimulationTests {
 	@Test
 	public void testCanFindAValidPasswordInDatabase() {
 		
-		String userInput = "myPa$$word";
+		String userName = "seshan.govender@gmail.com";
+		String userPassword = "myPa$$word";
 		String desiredOutcome = "Valid password. Logging in...";
-		String result = testObject.locatePassword(null, userInput, testObject.passwords);
+		String result = testObject.locatePassword(userName, userPassword, testObject.passwords);
 		assertEquals(desiredOutcome, result);
-		
+				
 	}
 	
 	@Test
 	public void testPasswordIsNotValidIfCaseMismatch() {
 	
+		String userName = "seshan.govender@gmail.com";
 		String userInput = "mypa$$word";
 		String desiredOutcome = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
-		String result = testObject.locatePassword(null, userInput, testObject.passwords);
+		String result = testObject.locatePassword(userName, userInput, testObject.passwords);
 		assertEquals(desiredOutcome, result);
 	}
 	
@@ -59,7 +61,7 @@ public class ATMSimulationTests {
 		String userName = "seshan.govender@gmail.com";
 		String password = "myPa$$word";
 		String desiredOutcome = "Valid password. Logging in...";
-		String result = testObject.locatePassword(null, password, testObject.passwords);
+		String result = testObject.locatePassword(userName, password, testObject.passwords);
 		assertEquals(desiredOutcome, result);
 	}
 	

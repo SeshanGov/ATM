@@ -18,10 +18,11 @@ public class ATM_Simulation {
 
 	public String locatePassword(String userNameEntered, String passwordEntered, String[] listOfPasswords) {
 		int userNameIndex = Arrays.asList(userNames).indexOf(userNameEntered);
-		int passwordIndex = Arrays.asList(userNames).indexOf(passwordEntered);
-		for (String password : listOfPasswords) {
-			if (password.equals(passwordEntered) && userNameIndex == passwordIndex) return "Valid password. Logging in...";
+		int passwordIndex = Arrays.asList(passwords).indexOf(passwordEntered);
+		if (userNameIndex == passwordIndex) {
+			return "Valid password. Logging in...";
 		}
+		
 		return "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
 	}
 
