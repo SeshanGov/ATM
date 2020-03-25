@@ -28,9 +28,9 @@ public class ATMSimulationTests {
 	@Test
 	public void testCannotFindUserNameInDatabase() {
 		
-		String userInput = "seshan.govender@gmail.co.za";
+		String userName = "seshan.govender@gmail.co.za";
 		String desiredOutcome = "User not found";
-		String result = testObject.findUserName(userInput, testObject.userNames);
+		String result = testObject.findUserName(userName, testObject.userNames);
 		assertEquals(desiredOutcome, result);
 		
 	}
@@ -72,7 +72,6 @@ public class ATMSimulationTests {
 		String desiredOutcome = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
 		String result = testObject.locatePassword(userName, password, testObject.passwords);
 		assertEquals(desiredOutcome, result);
-	}
-	
+	}	
 
 }
