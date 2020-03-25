@@ -18,7 +18,7 @@ public class ATM_Simulation {
 		for (String password : listOfPasswords) {
 			if (password.equals(userInput)) return userInput;
 		}
-		return null;
+		return "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
 	}
 
 }

@@ -46,7 +46,14 @@ public class ATMSimulationTests {
 		
 	}
 	
-	
+	@Test
+	public void testPasswordIsNotValidIfCaseMismatch() {
+		testObject = new ATM_Simulation();
+		String userInput = "mypa$$word";
+		String desiredOutcome = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
+		String result = testObject.locatePassword(userInput, testObject.passwords);
+		assertEquals(desiredOutcome, result);
+	}
 	
 
 }
