@@ -9,10 +9,12 @@ import java.util.Arrays;
 public class ATMSimulationTests {
 	
 	ATM_Simulation testObject;
+	String userName;
 	
 	@Before
 	public void setup() {
 		testObject = new ATM_Simulation();
+		userName = testObject.findUserName("Seshan.Govender@gmail.COM", testObject.userNames);
 	}
 	
 	// Logging in to the system
@@ -31,7 +33,7 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testCannotFindUserNameInDatabase() {
-		String userName = "seshan.govender@gmail.co.za";
+		userName = "seshan.govender@gmail.co.za";
 		String desiredOutcome = "User not found";
 		String result = testObject.findUserName(userName, testObject.userNames);
 		assertEquals(desiredOutcome, result);
@@ -39,7 +41,6 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testCanFindAValidPasswordInDatabase() {
-		String userName = "seshan.govender@gmail.com";
 		String userPassword = "myPa$$word";
 		String desiredOutcome = "Valid password. Logging in...";
 		String result = testObject.locatePassword(userName, userPassword, testObject.passwords);
@@ -48,7 +49,6 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testPasswordIsNotValidIfCaseMismatch() {
-		String userName = "seshan.govender@gmail.com";
 		String userInput = "mypa$$word";
 		String desiredOutcome = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
 		String result = testObject.locatePassword(userName, userInput, testObject.passwords);
@@ -57,7 +57,6 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testUsernameAndPasswordIsForCorrectAccount() {
-		String userName = "seshan.govender@gmail.com";
 		String password = "myPa$$word";
 		String desiredOutcome = "Valid password. Logging in...";
 		String result = testObject.locatePassword(userName, password, testObject.passwords);
@@ -66,7 +65,6 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testUsernameAndPasswordIsNotForCorrectAccount() {
-		String userName = "seshan.govender@gmail.com";
 		String password = "";
 		String desiredOutcome = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
 		String result = testObject.locatePassword(userName, password, testObject.passwords);
@@ -112,7 +110,6 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testViewCurrentBalance() {
-		String userName = "seshan.govender@gmail.com";
 		Double result = testObject.getAccountBalance(userName);
 		Double desiredOutcome = 10500.00;
 		assertEquals(desiredOutcome, result);
@@ -120,7 +117,6 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testCanGetCorrectBalanceForCorrectUser() {
-		String userName = "seshan.govender@gmail.com";
 		Double desiredOutcome = testObject.accountBalances[0];
 		Double result = testObject.getAccountBalance(userName);
 		assertEquals(desiredOutcome, result);
@@ -133,11 +129,15 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testWithdrawalFromAccount() {
-		String userName = testObject.findUserName("Seshan.Govender@gmail.COM", testObject.userNames);
 		Double withdrawalAmount = 500.00;
 		Double desiredOutcome = 10000.00;
 		Double result = testObject.withdrawFromAccount(userName, withdrawalAmount);
 		assertEquals(desiredOutcome, result);
+	}
+	
+	@Test
+	public void testCannotWithdrawANegativeAmount() {
+		
 	}
 
 }
