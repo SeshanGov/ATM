@@ -6,6 +6,7 @@ public class ATM_Simulation {
 	String[] userNames = {"seshan.govender@gmail.com", "keshini.chetty@gmail.com"};
 	String[] passwords = {"myPa$$word", "5e5hanG"};
 	String[] transactionOptions = {"1", "2", "3", "4", "quit"};
+	Double[] accountBalances = {10500.00, 8850.00};
 	
 	public static void main(String[] args) {
 		System.out.println("Test");
@@ -52,8 +53,9 @@ public class ATM_Simulation {
 		return outcome;
 	}
 
-	public Double viewCurrentBalance() {
-		return 10500.00;
+	public Double getAccountBalance(String userName) {
+		int userIndex = Arrays.asList(userNames).indexOf(userName);
+		return accountBalances[userIndex];
 	}
 
 }

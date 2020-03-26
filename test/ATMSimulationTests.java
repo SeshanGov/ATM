@@ -111,8 +111,22 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testViewCurrentBalance() {
-		Double result = testObject.viewCurrentBalance();
+		String userName = "seshan.govender@gmail.com";
+		Double result = testObject.getAccountBalance(userName);
 		Double desiredOutcome = 10500.00;
+		assertEquals(desiredOutcome, result);
+	}
+	
+	@Test
+	public void testCanGetCorrectBalanceForCorrectUser() {
+		String userName = "seshan.govender@gmail.com";
+		Double desiredOutcome = testObject.accountBalances[0];
+		Double result = testObject.getAccountBalance(userName);
+		assertEquals(desiredOutcome, result);
+		
+		userName = "keshini.chetty@gmail.com";
+		desiredOutcome = testObject.accountBalances[1];
+		result = testObject.getAccountBalance(userName);
 		assertEquals(desiredOutcome, result);
 	}
 
