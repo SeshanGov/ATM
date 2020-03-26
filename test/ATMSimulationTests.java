@@ -20,11 +20,12 @@ public class ATMSimulationTests {
 	@Test
 	public void testCanFindUserNameRegardlessOfCaseSensitivity() {
 		String desiredOutcome = "seshan.govender@gmail.com";
-		String result = testObject.findUserName(desiredOutcome, testObject.userNames);
+		String userInput = "seshan.govender@gmail.com";
+		String result = testObject.findUserName(userInput, testObject.userNames);
 		assertEquals("First test:", desiredOutcome, result);
 	
-		desiredOutcome = "Seshan.Govender@Gmail.Com";
-		result = testObject.findUserName(desiredOutcome, testObject.userNames);
+		userInput = "Seshan.Govender@Gmail.Com";
+		result = testObject.findUserName(userInput, testObject.userNames);
 		assertEquals("Second test:", desiredOutcome, result);
 	}
 	
