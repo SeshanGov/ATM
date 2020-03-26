@@ -140,5 +140,11 @@ public class ATMSimulationTests {
 		Double withdrawalAmount = -500.00;
 		testObject.withdrawFromAccount(userName, withdrawalAmount);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testWithdrawalAmountCannotBeEqualToZero() {
+		Double withdrawalAmount = 0.00;
+		testObject.withdrawFromAccount(userName, withdrawalAmount);
+	}
 
 }
