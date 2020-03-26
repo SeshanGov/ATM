@@ -108,6 +108,8 @@ public class ATMSimulationTests {
 		assertNotEquals(desiredOutcome, result);
 	}
 	
+	// Displaying the customer's account balance
+	
 	@Test
 	public void testViewCurrentBalance() {
 		Double result = testObject.getAccountBalance(userName);
@@ -126,6 +128,8 @@ public class ATMSimulationTests {
 		result = testObject.getAccountBalance(userName);
 		assertEquals(desiredOutcome, result);
 	}
+	
+	// Withdrawing from account
 	
 	@Test
 	public void testWithdrawalFromAccount() {
@@ -152,5 +156,15 @@ public class ATMSimulationTests {
 		Double withdrawalAmount = 11000.00;
 		testObject.withdrawFromAccount(userName, withdrawalAmount);
 	}
+	
+	// Depositing into account
+	
+	@Test
+	public void testCanDepositFundsIntoAnyAccount() {
+		Double amountToDeposit = 1000.00;
+		Double desiredOutcome = 11500.00;
+		Double result = testObject.depositAmount(amountToDeposit);
+		assertEquals(desiredOutcome, result);
+	}	
 
 }
