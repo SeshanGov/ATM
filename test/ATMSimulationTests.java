@@ -160,11 +160,11 @@ public class ATMSimulationTests {
 	// Depositing into account
 	
 	@Test
-	public void testCanDepositFundsIntoAnyAccount() {
+	public void testCanDepositFundsIntoCustomersAccount() {
 		Double amountToDeposit = 1000.00;
 		Double desiredOutcome = 11500.00;
 		Double result = testObject.depositAmount(amountToDeposit);
 		assertEquals(desiredOutcome, result);
-	}	
+	}
 
 }
