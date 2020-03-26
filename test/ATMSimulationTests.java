@@ -198,12 +198,14 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testUserEntersValidOptionFromAirtimeMenu() {
-//		testObject = mock(ATM_Simulation.class);
-//		when(testObject.getNetworkProviderInput()).thenReturn("2");
-		
 		String desiredOutcome = "2";
-		String result = testObject.getNetworkProviderInput();
+		String result = testObject.getNetworkProviderInput("2");
 		assertEquals(desiredOutcome, result);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testUserEntersInvalidOptionFromAirtimeMenu() {
+		testObject.getNetworkProviderInput("5");
 	}
 
 }

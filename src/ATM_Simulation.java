@@ -7,6 +7,8 @@ public class ATM_Simulation {
 	String[] passwords = {"myPa$$word", "5e5hanG"};
 	String[] transactionOptions = {"1", "2", "3", "4", "quit"};
 	Double[] accountBalances = {10500.00, 8850.00};
+	String[] airtimeMenuOptions = {"1", "2", "3", "4"};
+	Scanner getUserInput = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		System.out.println("Test");
@@ -41,8 +43,6 @@ public class ATM_Simulation {
 	}
 
 	public String getUserInput() {
-
-		Scanner getUserInput = new Scanner(System.in);
 		String userInput = getUserInput.nextLine();
 		String outcome = "";
 		
@@ -86,8 +86,9 @@ public class ATM_Simulation {
 		return airtimeMenu;
 	}
 
-	public String getNetworkProviderInput() {
-		return "2";
+	public String getNetworkProviderInput(String userInput) {
+		if (Arrays.asList(airtimeMenuOptions).contains(userInput)) return userInput;
+		throw new IllegalArgumentException("You have not entered a valid option.");
 	}
 
 }
