@@ -59,8 +59,11 @@ public class ATM_Simulation {
 	}
 
 	public Double withdrawFromAccount(String userName, Double withdrawalAmount) {
-		Double currentBalance = getAccountBalance(userName);
-		return currentBalance - withdrawalAmount;
+		if (withdrawalAmount > 0) {
+			Double currentBalance = getAccountBalance(userName);
+			return currentBalance - withdrawalAmount;
+		}
+		throw new IllegalArgumentException("Please note that the withdrawal amount must be greater than zero.");
 	}
 
 }

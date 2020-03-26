@@ -135,9 +135,10 @@ public class ATMSimulationTests {
 		assertEquals(desiredOutcome, result);
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testCannotWithdrawANegativeAmount() {
-		
+		Double withdrawalAmount = -500.00;
+		testObject.withdrawFromAccount(userName, withdrawalAmount);
 	}
 
 }
