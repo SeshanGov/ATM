@@ -59,8 +59,9 @@ public class ATM_Simulation {
 	}
 
 	public Double withdrawFromAccount(String userName, Double withdrawalAmount) {
+		Double currentBalance = getAccountBalance(userName);
 		if (withdrawalAmount > 0) {
-			Double currentBalance = getAccountBalance(userName);
+			if (withdrawalAmount > currentBalance) throw new IllegalArgumentException("Sorry, you do not have sufficient funds in your account to complete this transaction.");
 			return currentBalance - withdrawalAmount;
 		}
 		throw new IllegalArgumentException("Please note that the withdrawal amount must be greater than zero.");
