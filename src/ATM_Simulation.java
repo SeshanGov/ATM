@@ -73,4 +73,17 @@ public class ATM_Simulation {
 		return currentBalance += amountToDeposit;
 	}
 
+	public String displayAirtimeMenu() {
+		String airtimeMenu = "---------- BUY AIRTIME ----------"
+						+	 ""
+						+ 	 "Please select your network provider from the list provided below:"
+						+ 	 ""
+						+ 	 "- Enter 1 for MTN"
+						+ 	 "- Enter 2 for Vodacom"
+						+ 	 "- Enter 3 for CellC"
+						+ 	 "- Enter 4 for Telkom"
+						+ 	 "";
+		return airtimeMenu;
+	}
+
 }

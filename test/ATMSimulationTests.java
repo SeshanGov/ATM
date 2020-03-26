@@ -178,5 +178,22 @@ public class ATMSimulationTests {
 		Double amountToDeposit = -250.00;
 		testObject.depositAmount(userName, amountToDeposit);
 	}
+	
+	// Airtime menu - option 4 on home screen
+	
+	@Test
+	public void testDisplayAirtimeMenu() {
+		String desiredOutcome = "---------- BUY AIRTIME ----------"
+							+	""
+							+ 	"Please select your network provider from the list provided below:"
+							+ 	""
+							+ 	"- Enter 1 for MTN"
+							+ 	"- Enter 2 for Vodacom"
+							+ 	"- Enter 3 for CellC"
+							+ 	"- Enter 4 for Telkom"
+							+ 	"";
+		String result = testObject.displayAirtimeMenu();
+		assertEquals(desiredOutcome, result);
+	}
 
 }
