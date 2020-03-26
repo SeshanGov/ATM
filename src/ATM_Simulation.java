@@ -67,9 +67,10 @@ public class ATM_Simulation {
 		throw new IllegalArgumentException("Please note that the withdrawal amount must be greater than zero.");
 	}
 
-	public Double depositAmount(Double amountToDeposit) {
-		if (amountToDeposit == 0) throw new IllegalArgumentException("Please note that the deposit amount must be greater than zero.");
-		return 11500.00;
+	public Double depositAmount(String userName, Double amountToDeposit) {
+		if (amountToDeposit <= 0) throw new IllegalArgumentException("Please note that the deposit amount must be greater than zero.");
+		Double currentBalance = getAccountBalance(userName);
+		return currentBalance += amountToDeposit;
 	}
 
 }

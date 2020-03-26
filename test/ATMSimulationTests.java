@@ -163,14 +163,20 @@ public class ATMSimulationTests {
 	public void testCanDepositFundsIntoCustomersAccount() {
 		Double amountToDeposit = 1000.00;
 		Double desiredOutcome = 11500.00;
-		Double result = testObject.depositAmount(amountToDeposit);
+		Double result = testObject.depositAmount(userName,amountToDeposit);
 		assertEquals(desiredOutcome, result);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testDepositAmountCannotBeEqualToZero() {
 		Double amountToDeposit = 0.00;
-		testObject.depositAmount(amountToDeposit);
+		testObject.depositAmount(userName, amountToDeposit);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testDepositAmountCannotBeLessThanZero() {
+		Double amountToDeposit = -250.00;
+		testObject.depositAmount(userName, amountToDeposit);
 	}
 
 }
