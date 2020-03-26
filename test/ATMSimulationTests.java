@@ -108,5 +108,12 @@ public class ATMSimulationTests {
 		String result = testObject.getUserInput();
 		assertNotEquals(desiredOutcome, result);
 	}
+	
+	@Test
+	public void testViewCurrentBalance() {
+		Double result = testObject.viewCurrentBalance();
+		Double desiredOutcome = 10500.00;
+		assertEquals(desiredOutcome, result);
+	}
 
 }

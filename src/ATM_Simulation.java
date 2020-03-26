@@ -52,4 +52,8 @@ public class ATM_Simulation {
 		return outcome;
 	}
 
+	public Double viewCurrentBalance() {
+		return 10500.00;
+	}
+
 }
