@@ -129,5 +129,14 @@ public class ATMSimulationTests {
 		result = testObject.getAccountBalance(userName);
 		assertEquals(desiredOutcome, result);
 	}
+	
+	@Test
+	public void testWithdrawalFromAccount() {
+		String userName = testObject.findUserName("Seshan.Govender@gmail.COM", testObject.userNames);
+		Double withdrawalAmount = 500.00;
+		Double desiredOutcome = 10000.00;
+		Double result = testObject.withdrawFromAccount(userName, withdrawalAmount);
+		assertEquals(desiredOutcome, result);
+	}
 
 }

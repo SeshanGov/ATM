@@ -14,7 +14,7 @@ public class ATM_Simulation {
 
 	public String findUserName(String userInput, String[] listOfUserNames) {
 		for (String userName: listOfUserNames) {
-			if (userName.equalsIgnoreCase(userInput)) return userInput;
+			if (userName.equalsIgnoreCase(userInput)) return userInput.toLowerCase();
 		}
 		return "User not found";		
 	}
@@ -56,6 +56,11 @@ public class ATM_Simulation {
 	public Double getAccountBalance(String userName) {
 		int userIndex = Arrays.asList(userNames).indexOf(userName);
 		return accountBalances[userIndex];
+	}
+
+	public Double withdrawFromAccount(String userName, Double withdrawalAmount) {
+		Double currentBalance = getAccountBalance(userName);
+		return currentBalance - withdrawalAmount;
 	}
 
 }
