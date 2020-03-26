@@ -86,4 +86,8 @@ public class ATM_Simulation {
 		return airtimeMenu;
 	}
 
+	public String getNetworkProviderInput() {
+		return "2";
+	}
+
 }

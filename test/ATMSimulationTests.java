@@ -195,5 +195,15 @@ public class ATMSimulationTests {
 		String result = testObject.displayAirtimeMenu();
 		assertEquals(desiredOutcome, result);
 	}
+	
+	@Test
+	public void testUserEntersValidOptionFromAirtimeMenu() {
+//		testObject = mock(ATM_Simulation.class);
+//		when(testObject.getNetworkProviderInput()).thenReturn("2");
+		
+		String desiredOutcome = "2";
+		String result = testObject.getNetworkProviderInput();
+		assertEquals(desiredOutcome, result);
+	}
 
 }
