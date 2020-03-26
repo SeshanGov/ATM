@@ -96,10 +96,8 @@ public class ATMSimulationTests {
 		
 		if (Arrays.asList(testObject.transactionOptions).contains(result)) {
 			desiredOutcome = "Valid response";
-		} else {
-			desiredOutcome = "Invalid response";
-		}
-		assertEquals(desiredOutcome, result);
+			assertEquals(desiredOutcome, result);
+		}		
 	}
 	
 	@Test
