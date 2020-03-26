@@ -68,6 +68,7 @@ public class ATM_Simulation {
 	}
 
 	public Double depositAmount(Double amountToDeposit) {
+		if (amountToDeposit == 0) throw new IllegalArgumentException("Please note that the deposit amount must be greater than zero.");
 		return 11500.00;
 	}
 

@@ -166,5 +166,11 @@ public class ATMSimulationTests {
 		Double result = testObject.depositAmount(amountToDeposit);
 		assertEquals(desiredOutcome, result);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testDepositAmountCannotBeEqualToZero() {
+		Double amountToDeposit = 0.00;
+		testObject.depositAmount(amountToDeposit);
+	}
 
 }
