@@ -9,9 +9,30 @@ public class ATM_Simulation {
 	Double[] accountBalances = {10500.00, 8850.00};
 	String[] airtimeMenuOptions = {"1", "2", "3", "4"};
 	Scanner getUserInput = new Scanner(System.in);
+	private String userName = null;
+	private String password = null;
+	
+	private void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	private void setUserPassword(String password) {
+		this.password = password;
+	}
+	
+	private String getUserName() {
+		return this.userName;
+	}
+	
+	private String getUserPassword() {
+		return this.password;
+	}
 	
 	public static void main(String[] args) {
-		System.out.println("Test");
+		ATM_Simulation currentSession = new ATM_Simulation();
+		
+		System.out.println("Please enter your user name:");
+		currentSession.userName = currentSession.getUserInput.nextLine();
 	}
 
 	public String findUserName(String userInput, String[] listOfUserNames) {
