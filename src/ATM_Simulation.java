@@ -37,6 +37,26 @@ public class ATM_Simulation {
 			userName = currentSession.findUserName(currentSession.getUserInput.nextLine(), currentSession.userNames);
 		}
 		
+		String password = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
+		int loginAttempts = 4;
+		while (password.equals(password)) {
+			if (loginAttempts == 4) loginAttempts--;
+			System.out.println("Please enter your password:");
+			password = currentSession.locatePassword(userName, currentSession.getUserInput.nextLine(), currentSession.passwords);
+			if (loginAttempts <= 3) {
+				if (loginAttempts == 0) {
+					System.out.println("Your account has been locked. Please wait a few minutes before trying again.");
+					break;
+				}
+				else {
+					System.out.println(loginAttempts + " attempts remaining.");
+					loginAttempts--;
+				}
+			}
+						
+		}
+		
+		System.out.println("END");
 		
 	}
 
