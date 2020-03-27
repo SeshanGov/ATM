@@ -31,8 +31,13 @@ public class ATM_Simulation {
 	public static void main(String[] args) {
 		ATM_Simulation currentSession = new ATM_Simulation();
 		
-		System.out.println("Please enter your user name:");
-		currentSession.userName = currentSession.getUserInput.nextLine();
+		String userName = "User not found";
+		while (userName.equals("User not found")) {
+			System.out.println("Please enter your user name:");
+			userName = currentSession.findUserName(currentSession.getUserInput.nextLine(), currentSession.userNames);
+		}
+		
+		
 	}
 
 	public String findUserName(String userInput, String[] listOfUserNames) {
