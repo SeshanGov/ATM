@@ -12,6 +12,11 @@ public class ATM_Simulation {
 	private String userName = null;
 	private String password = null;
 	private boolean loggedIn = false;
+	private double userAccountBalance;
+	
+	private void updateUserAccountBalance(double transactionAmount) {
+		this.userAccountBalance += transactionAmount;
+	}
 	
 	private void setLoggedIn(boolean value) {
 		this.loggedIn = value;
@@ -72,6 +77,8 @@ public class ATM_Simulation {
 		}
 		
 		while (currentSession.loggedIn) {
+			
+			
 			System.out.println(currentSession.loadMainScreen());
 			String transact = currentSession.getUserInput.nextLine();
 			boolean isValidTransaction = currentSession.isValidTransaction(transact);
@@ -92,6 +99,10 @@ public class ATM_Simulation {
 										 + "Your new account balance is R " + newAccountBalance);
 						break;
 					case "3":
+						System.out.println("Please enter the amount that you would like to deposit:");
+						Double depositAmount = currentSession.getUserInput.nextDouble();
+						System.out.println("Depositing funds...");
+						
 						System.out.println("Depositing cash...");
 						break;
 					case "4":
