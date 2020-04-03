@@ -11,6 +11,11 @@ public class ATM_Simulation {
 	Scanner getUserInput = new Scanner(System.in);
 	private String userName = null;
 	private String password = null;
+	private boolean loggedIn = false;
+	
+	private void setLoggedIn(boolean value) {
+		this.loggedIn = value;
+	}
 	
 	private void setUserName(String userName) {
 		this.userName = userName;
@@ -50,6 +55,7 @@ public class ATM_Simulation {
 			passwordIsValid = currentSession.locatePassword(userName, password, currentSession.passwords);
 			if (passwordIsValid) {
 				System.out.println("Authentication successful. Logging in...");
+				currentSession.setLoggedIn(passwordIsValid);
 				break;
 			}
 			else {
@@ -63,6 +69,10 @@ public class ATM_Simulation {
 					loginAttempts--;
 				}
 			}
+		}
+		
+		while (currentSession.loggedIn) {
+			
 		}
 		
 		System.out.println("END");
