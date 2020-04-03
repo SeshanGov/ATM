@@ -61,6 +61,8 @@ public class ATM_Simulation {
 			if (passwordIsValid) {
 				System.out.println("Authentication successful. Logging in...");
 				currentSession.setLoggedIn(passwordIsValid);
+				currentSession.setUserName(userName);
+				currentSession.setUserPassword(password);
 				break;
 			}
 			else {
