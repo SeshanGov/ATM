@@ -73,7 +73,10 @@ public class ATM_Simulation {
 		
 		while (currentSession.loggedIn) {
 			System.out.println(currentSession.loadMainScreen());
-			currentSession.getUserInput();
+			String transact = currentSession.getUserInput.nextLine();
+			boolean isValidTransaction = currentSession.isValidTransaction(transact);
+			
+			
 			
 		}
 		
@@ -112,15 +115,14 @@ public class ATM_Simulation {
 				+ "------------------------------------------------------------------\n";
 	}
 
-	public String getUserInput() {
-		String userInput = getUserInput.nextLine();
-		String outcome = "";
+	public boolean isValidTransaction(String userInput) {		
+		boolean isValidTransaction = false;
 		
-		if (Arrays.asList(transactionOptions).contains(userInput)) outcome = "Valid response";
-		else outcome = "Invalid response";
+		if (Arrays.asList(transactionOptions).contains(userInput)) isValidTransaction = true;
+		else isValidTransaction = false;
 		
 		getUserInput.close();
-		return outcome;
+		return isValidTransaction;
 	}
 
 	public Double getAccountBalance(String userName) {

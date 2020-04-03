@@ -88,22 +88,16 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void userEntersValidOptionFromMainScreen() {
-		String desiredOutcome = "";
-		String result = testObject.getUserInput();
-		
-		if (Arrays.asList(testObject.transactionOptions).contains(result)) {
-			desiredOutcome = "Valid response";
-			assertEquals(desiredOutcome, result);
-		}		
+		String userResponse = "3";
+		boolean result = testObject.isValidTransaction(userResponse);
+		assertTrue(result);		
 	}
 	
 	@Test
 	public void userEntersInvalidOptionFromMainScreen() {
-		testObject = mock(ATM_Simulation.class);
-		when(testObject.getUserInput()).thenReturn("5");
-		String desiredOutcome = "Invalid response";
-		String result = testObject.getUserInput();
-		assertNotEquals(desiredOutcome, result);
+		String userResponse = "5";
+		boolean result = testObject.isValidTransaction(userResponse);
+		assertFalse(result);
 	}
 	
 	// Displaying the customer's account balance
