@@ -72,15 +72,17 @@ public class ATMSimulationTests {
 	@Test
 	public void testWelcomeScreenLoad() {
 		String result = testObject.loadMainScreen();
-		String desiredOutcome = "----------------------------------------\n"
-							+	" WELCOME TO THE ONLINE BANKING PLATFORM \n"
-							+ 	""
-							+ 	" - Press 1 if you would like to view your current balance."
-							+ 	" - Press 2 of you would like to withdraw cash from your account."
-							+ 	" - Press 3 if you would like to deposit cash into your account."
-							+ 	" - Press 4 if you would like to purchase airtime."
-							+ 	"\n Type 'quit' if you wish to cancel this transaction."
-							+	"----------------------------------------";
+		String desiredOutcome = "---------------------------------------------------------------------\n"
+				+ "\n"
+				+ "WELCOME TO THE ONLINE BANKING PLATFORM\n"
+				+ "\n"
+				+ " - Press 1 if you would like to view your current balance.\n"
+				+ " - Press 2 of you would like to withdraw cash from your account.\n"
+				+ " - Press 3 if you would like to deposit cash into your account.\n"
+				+ " - Press 4 if you would like to purchase airtime.\n"
+				+ "\n"
+				+ " Type 'quit' if you wish to cancel this transaction.\n"
+				+ "------------------------------------------------------------------\n";
 		assertEquals(desiredOutcome, result);
 	}
 	
