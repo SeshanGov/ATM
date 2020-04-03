@@ -76,10 +76,35 @@ public class ATM_Simulation {
 			String transact = currentSession.getUserInput.nextLine();
 			boolean isValidTransaction = currentSession.isValidTransaction(transact);
 			
+			if (isValidTransaction) {
+				switch(transact) {
+					case "1":
+						System.out.println("Displaying balance...");
+						break;
+					case "2":
+						System.out.println("Withdrawing cash...");
+						break;
+					case "3":
+						System.out.println("Depositing cash...");
+						break;
+					case "4":
+						System.out.println("Buying airtime...");
+						break;
+					default:
+						System.out.println("You have chosen not to proceed. Logging out...");
+						currentSession.loggedIn = false;
+				}
+			} else {
+				System.out.println("You have not entered a valid option");
+				continue;
+			}
+			
 			
 			
 		}
 		
+		
+		currentSession.getUserInput.close();
 		System.out.println("END");
 		
 	}
@@ -120,8 +145,7 @@ public class ATM_Simulation {
 		
 		if (Arrays.asList(transactionOptions).contains(userInput)) isValidTransaction = true;
 		else isValidTransaction = false;
-		
-		getUserInput.close();
+	
 		return isValidTransaction;
 	}
 
