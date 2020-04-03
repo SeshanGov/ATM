@@ -35,25 +35,34 @@ public class ATM_Simulation {
 		while (userName.equals("User not found")) {
 			System.out.println("Please enter your user name:");
 			userName = currentSession.findUserName(currentSession.getUserInput.nextLine(), currentSession.userNames);
+			if (userName.equals("User not found")) {
+				System.out.println("User name does not exist.");
+			}
 		}
 		
-		String password = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
-		int loginAttempts = 4;
-		while (password.equals(password)) {
-			if (loginAttempts == 4) loginAttempts--;
+		String password = "";
+		int loginAttempts = 3;
+		boolean passwordIsValid = false;
+		
+		while (loginAttempts >= 0) {
 			System.out.println("Please enter your password:");
-			password = currentSession.getUserPassword();
-			if (loginAttempts <= 3) {
+			password = currentSession.getUserInput.nextLine();
+			passwordIsValid = currentSession.locatePassword(userName, password, currentSession.passwords);
+			if (passwordIsValid) {
+				System.out.println("Authentication successful. Logging in...");
+				break;
+			}
+			else {
 				if (loginAttempts == 0) {
 					System.out.println("Your account has been locked. Please wait a few minutes before trying again.");
 					break;
 				}
 				else {
+					System.out.println("Incorrect password. Please re-type your password, bearing in mind that the passwords is case-sensitive.");
 					System.out.println(loginAttempts + " attempts remaining.");
 					loginAttempts--;
 				}
 			}
-						
 		}
 		
 		System.out.println("END");
