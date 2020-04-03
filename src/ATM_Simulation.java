@@ -79,7 +79,8 @@ public class ATM_Simulation {
 			if (isValidTransaction) {
 				switch(transact) {
 					case "1":
-						System.out.println("Displaying balance...");
+						double accountBalance = currentSession.getAccountBalance(userName);
+						System.out.println("Your current account balance is R " + accountBalance);
 						break;
 					case "2":
 						System.out.println("Withdrawing cash...");
