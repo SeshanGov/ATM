@@ -42,7 +42,7 @@ public class ATM_Simulation {
 		while (password.equals(password)) {
 			if (loginAttempts == 4) loginAttempts--;
 			System.out.println("Please enter your password:");
-			password = currentSession.locatePassword(userName, currentSession.getUserInput.nextLine(), currentSession.passwords);
+			password = currentSession.getUserPassword();
 			if (loginAttempts <= 3) {
 				if (loginAttempts == 0) {
 					System.out.println("Your account has been locked. Please wait a few minutes before trying again.");
@@ -67,13 +67,14 @@ public class ATM_Simulation {
 		return "User not found";		
 	}
 
-	public String locatePassword(String userNameEntered, String passwordEntered, String[] listOfPasswords) {
+	public boolean locatePassword(String userNameEntered, String passwordEntered, String[] listOfPasswords) {
+		boolean loggedIn = false;
 		int userNameIndex = Arrays.asList(userNames).indexOf(userNameEntered);
 		int passwordIndex = Arrays.asList(passwords).indexOf(passwordEntered);
 		if (userNameIndex == passwordIndex) {
-			return "Valid password. Logging in...";
+			loggedIn = true;
 		}		
-		return "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
+		return loggedIn;
 	}
 
 	public String loadMainScreen() {

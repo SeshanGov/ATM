@@ -42,33 +42,29 @@ public class ATMSimulationTests {
 	@Test
 	public void testCanFindAValidPasswordInDatabase() {
 		String userPassword = "myPa$$word";
-		String desiredOutcome = "Valid password. Logging in...";
-		String result = testObject.locatePassword(userName, userPassword, testObject.passwords);
-		assertEquals(desiredOutcome, result);
+		boolean result = testObject.locatePassword(userName, userPassword, testObject.passwords);
+		assertTrue(result);
 	}
 	
 	@Test
 	public void testPasswordIsNotValidIfCaseMismatch() {
 		String userInput = "mypa$$word";
-		String desiredOutcome = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
-		String result = testObject.locatePassword(userName, userInput, testObject.passwords);
-		assertEquals(desiredOutcome, result);
+		boolean result = testObject.locatePassword(userName, userInput, testObject.passwords);
+		assertFalse(result);
 	}
 	
 	@Test
 	public void testUsernameAndPasswordIsForCorrectAccount() {
 		String password = "myPa$$word";
-		String desiredOutcome = "Valid password. Logging in...";
-		String result = testObject.locatePassword(userName, password, testObject.passwords);
-		assertEquals(desiredOutcome, result);
+		boolean result = testObject.locatePassword(userName, password, testObject.passwords);
+		assertTrue(result);
 	}
 	
 	@Test
 	public void testUsernameAndPasswordIsNotForCorrectAccount() {
 		String password = "";
-		String desiredOutcome = "Incorrect password!\nPlease re-enter your password and note that passwords are case sensitive.";
-		String result = testObject.locatePassword(userName, password, testObject.passwords);
-		assertEquals(desiredOutcome, result);
+		boolean result = testObject.locatePassword(userName, password, testObject.passwords);
+		assertFalse(result);
 	}
 	
 	// Once logged in - main functionality
