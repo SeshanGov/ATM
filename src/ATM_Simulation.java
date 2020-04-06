@@ -219,7 +219,7 @@ public class ATM_Simulation {
 		return airtimeMenu;
 	}
 
-	public String getNetworkProviderInput(String userInput) {
+	public String validateNetworkProvider(String userInput) {
 		if (Arrays.asList(airtimeMenuOptions).contains(userInput)) return userInput;
 		throw new IllegalArgumentException("You have not entered a valid option.");
 	}

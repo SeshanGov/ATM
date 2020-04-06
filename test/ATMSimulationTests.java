@@ -154,33 +154,13 @@ public class ATMSimulationTests {
 		double transactionAmount = 1000;
 		double currentBalance = testObject.getAccountBalance(userName);
 		double desiredOutcome = currentBalance - transactionAmount;
-		double result = testObject.withdrawFromAccount(userName, transactionAmount);
-		
+		double result = testObject.withdrawFromAccount(userName, transactionAmount);		
 		assertEquals(desiredOutcome, result, 0);
 		
 		transactionAmount = 500;
 		currentBalance = testObject.getAccountBalance(userName);
 		desiredOutcome = currentBalance - transactionAmount;
-		result = testObject.withdrawFromAccount(userName, transactionAmount);
-		
-		assertEquals(desiredOutcome, result, 0);
-		
-	}
-	
-	@Test
-	public void testAccountBalanceGetsUpdatedAfterEachDeposit() {
-		double transactionAmount = 1000;
-		double currentBalance = testObject.getAccountBalance(userName);
-		double desiredOutcome = currentBalance + transactionAmount;
-		double result = testObject.depositAmount(userName, transactionAmount);
-		
-		assertEquals(desiredOutcome, result, 0);
-		
-		transactionAmount = 500;
-		currentBalance = testObject.getAccountBalance(userName);
-		desiredOutcome = currentBalance + transactionAmount;
-		result = testObject.depositAmount(userName, transactionAmount);
-		
+		result = testObject.withdrawFromAccount(userName, transactionAmount);		
 		assertEquals(desiredOutcome, result, 0);
 	}
 	
@@ -206,6 +186,21 @@ public class ATMSimulationTests {
 		testObject.depositAmount(userName, amountToDeposit);
 	}
 	
+	@Test
+	public void testAccountBalanceGetsUpdatedAfterEachDeposit() {
+		double transactionAmount = 1000;
+		double currentBalance = testObject.getAccountBalance(userName);
+		double desiredOutcome = currentBalance + transactionAmount;
+		double result = testObject.depositAmount(userName, transactionAmount);		
+		assertEquals(desiredOutcome, result, 0);
+		
+		transactionAmount = 500;
+		currentBalance = testObject.getAccountBalance(userName);
+		desiredOutcome = currentBalance + transactionAmount;
+		result = testObject.depositAmount(userName, transactionAmount);		
+		assertEquals(desiredOutcome, result, 0);
+	}
+	
 	// Airtime menu - option 4 on home screen
 	
 	@Test
@@ -226,13 +221,13 @@ public class ATMSimulationTests {
 	@Test
 	public void testUserEntersValidOptionFromAirtimeMenu() {
 		String desiredOutcome = "2";
-		String result = testObject.getNetworkProviderInput("2");
+		String result = testObject.validateNetworkProvider("2");
 		assertEquals(desiredOutcome, result);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testUserEntersInvalidOptionFromAirtimeMenu() {
-		testObject.getNetworkProviderInput("5");
+		testObject.validateNetworkProvider("5");
 	}
 
 }
