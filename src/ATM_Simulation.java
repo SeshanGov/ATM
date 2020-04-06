@@ -9,11 +9,11 @@ public class ATM_Simulation {
 	Double[] accountBalances = {10500.00, 8850.00};
 	String[] airtimeMenuOptions = {"1", "2", "3", "4"};
 	Scanner getUserInput = new Scanner(System.in);
-	private String userName = null;
-	private String password = null;
-	private boolean loggedIn = false;
+	String userName = null;
+	String password = null;
+	boolean loggedIn = false;
 	
-	private void setLoggedIn(boolean value) {
+	void setLoggedIn(boolean value) {
 		this.loggedIn = value;
 	}
 	

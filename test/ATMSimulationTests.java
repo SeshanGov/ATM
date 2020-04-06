@@ -67,6 +67,12 @@ public class ATMSimulationTests {
 	// Once logged in - main functionality
 	
 	@Test
+	public void testCanUpdateLoggedInStatus() {
+		testObject.setLoggedIn(true);
+		assertTrue(testObject.loggedIn);
+	}
+	
+	@Test
 	public void testWelcomeScreenLoad() {
 		String result = testObject.loadMainScreen();
 		String desiredOutcome = "---------------------------------------------------------------------\n"
