@@ -17,7 +17,7 @@ public class ATM_Simulation {
 		this.loggedIn = value;
 	}
 	
-	private void setUserName(String userName) {
+	void setUserName(String userName) {
 		this.userName = userName;
 	}
 	

@@ -73,6 +73,13 @@ public class ATMSimulationTests {
 	}
 	
 	@Test
+	public void testCanUpdateUserNameOnceLoggedIn() {
+		testObject.setUserName(userName);
+		String desiredOutcome = "seshan.govender@gmail.com";
+		assertEquals(desiredOutcome, testObject.userName);
+	}
+	
+	@Test
 	public void testWelcomeScreenLoad() {
 		String result = testObject.loadMainScreen();
 		String desiredOutcome = "---------------------------------------------------------------------\n"
