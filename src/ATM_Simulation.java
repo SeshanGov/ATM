@@ -12,11 +12,6 @@ public class ATM_Simulation {
 	private String userName = null;
 	private String password = null;
 	private boolean loggedIn = false;
-	private double userAccountBalance;
-	
-	private void updateUserAccountBalance(double transactionAmount) {
-		this.userAccountBalance += transactionAmount;
-	}
 	
 	private void setLoggedIn(boolean value) {
 		this.loggedIn = value;
@@ -28,14 +23,6 @@ public class ATM_Simulation {
 	
 	private void setUserPassword(String password) {
 		this.password = password;
-	}
-	
-	private String getUserName() {
-		return this.userName;
-	}
-	
-	private String getUserPassword() {
-		return this.password;
 	}
 	
 	public static void main(String[] args) {
@@ -79,11 +66,7 @@ public class ATM_Simulation {
 		}
 		
 		while (currentSession.loggedIn) {
-			
-			currentSession.setUserName(userName);
-			currentSession.setUserPassword(password);
-			currentSession.userAccountBalance = currentSession.getAccountBalance(userName);
-			
+						
 			System.out.println(currentSession.loadMainScreen());
 			String transact = currentSession.getUserInput.nextLine();
 			boolean isValidTransaction = currentSession.isValidTransaction(transact);
@@ -91,17 +74,17 @@ public class ATM_Simulation {
 			if (isValidTransaction) {
 				switch(transact) {
 					case "1":
-						System.out.println("Your current account balance is R " + currentSession.userAccountBalance);
+						System.out.println("Your current account balance is R " + currentSession.getAccountBalance(userName));
 						break;
 					case "2":
 						System.out.println("Please enter the amount that you would like to withdraw:");
 						Double withdrawalAmount = currentSession.getUserInput.nextDouble();
 						System.out.println("Withdrawing cash...");
 						try {
-							currentSession.userAccountBalance = currentSession.withdrawFromAccount(userName, withdrawalAmount);
+							currentSession.withdrawFromAccount(userName, withdrawalAmount);
 							System.out.println("Thank you for your patience. Your transaction has been completed successfully.\n"
 											+ "Please take your cash.\n"
-											+ "Your new account balance is R " + currentSession.userAccountBalance);
+											+ "Your new account balance is R " + currentSession.getAccountBalance(userName));
 						} catch (IllegalArgumentException e) {
 							System.out.println(e.getMessage());
 						}
@@ -111,15 +94,21 @@ public class ATM_Simulation {
 						Double depositAmount = currentSession.getUserInput.nextDouble();
 						try {
 							System.out.println("Depositing funds...");
-							currentSession.userAccountBalance = currentSession.depositAmount(userName, depositAmount);
+							currentSession.depositAmount(userName, depositAmount);
 							System.out.println("Thank you for your patience. Your deposit has been made successfully.");
-							System.out.println("Your new account balance is R " + currentSession.userAccountBalance);
+							System.out.println("Your new account balance is R " + currentSession.getAccountBalance(userName));
 						} catch (IllegalArgumentException e) {
 							System.out.println(e.getMessage());
 						}
 						break;
 					case "4":
-						System.out.println("Buying airtime...");
+						System.out.println(currentSession.displayAirtimeMenu());
+						try {
+							String transaction = currentSession.validateNetworkProvider(currentSession.getUserInput.nextLine());
+							System.out.println();
+						} catch (IllegalArgumentException e) {
+							System.out.println(e.getMessage());
+						}
 						break;
 					default:
 						System.out.println("You have chosen not to proceed. Logging out...");
@@ -207,15 +196,15 @@ public class ATM_Simulation {
 	}
 
 	public String displayAirtimeMenu() {
-		String airtimeMenu = "---------- BUY AIRTIME ----------"
-						+	 ""
-						+ 	 "Please select your network provider from the list provided below:"
-						+ 	 ""
-						+ 	 "- Enter 1 for MTN"
-						+ 	 "- Enter 2 for Vodacom"
-						+ 	 "- Enter 3 for CellC"
-						+ 	 "- Enter 4 for Telkom"
-						+ 	 "";
+		String airtimeMenu = "---------- BUY AIRTIME ----------\n"
+						+	 "\n"
+						+ 	 "Please select your network provider from the list provided below:\n"
+						+ 	 "\n"
+						+ 	 "- Enter 1 for MTN\n"
+						+ 	 "- Enter 2 for Vodacom\n"
+						+ 	 "- Enter 3 for CellC\n"
+						+ 	 "- Enter 4 for Telkom\n"
+						+ 	 "\n";
 		return airtimeMenu;
 	}
 

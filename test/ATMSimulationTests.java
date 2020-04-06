@@ -2,9 +2,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.mockito.Mockito.*;
-
-import java.util.Arrays;
 
 public class ATMSimulationTests {
 	
@@ -205,15 +202,15 @@ public class ATMSimulationTests {
 	
 	@Test
 	public void testDisplayAirtimeMenu() {
-		String desiredOutcome = "---------- BUY AIRTIME ----------"
-							+	""
-							+ 	"Please select your network provider from the list provided below:"
-							+ 	""
-							+ 	"- Enter 1 for MTN"
-							+ 	"- Enter 2 for Vodacom"
-							+ 	"- Enter 3 for CellC"
-							+ 	"- Enter 4 for Telkom"
-							+ 	"";
+		String desiredOutcome = "---------- BUY AIRTIME ----------\n"
+						+	 "\n"
+						+ 	 "Please select your network provider from the list provided below:\n"
+						+ 	 "\n"
+						+ 	 "- Enter 1 for MTN\n"
+						+ 	 "- Enter 2 for Vodacom\n"
+						+ 	 "- Enter 3 for CellC\n"
+						+ 	 "- Enter 4 for Telkom\n"
+						+ 	 "\n";
 		String result = testObject.displayAirtimeMenu();
 		assertEquals(desiredOutcome, result);
 	}
