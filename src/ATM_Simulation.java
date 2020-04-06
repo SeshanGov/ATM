@@ -97,10 +97,14 @@ public class ATM_Simulation {
 						System.out.println("Please enter the amount that you would like to withdraw:");
 						Double withdrawalAmount = currentSession.getUserInput.nextDouble();
 						System.out.println("Withdrawing cash...");
-						Double newAccountBalance = currentSession.withdrawFromAccount(userName, withdrawalAmount);
-						System.out.println("Thank you for your patience. Your transaction has been completed successfully.\n"
-										 + "Please take your cash.\n"
-										 + "Your new account balance is R " + newAccountBalance);
+						try {
+							currentSession.userAccountBalance = currentSession.withdrawFromAccount(userName, withdrawalAmount);
+							System.out.println("Thank you for your patience. Your transaction has been completed successfully.\n"
+											+ "Please take your cash.\n"
+											+ "Your new account balance is R " + currentSession.userAccountBalance);
+						} catch (IllegalArgumentException e) {
+							System.out.println(e.getMessage());
+						}
 						break;
 					case "3":
 						System.out.println("Please enter the amount that you would like to deposit:");
