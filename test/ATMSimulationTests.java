@@ -157,9 +157,32 @@ public class ATMSimulationTests {
 		double result = testObject.withdrawFromAccount(userName, transactionAmount);
 		
 		assertEquals(desiredOutcome, result, 0);
+		
+		transactionAmount = 500;
+		currentBalance = testObject.getAccountBalance(userName);
+		desiredOutcome = currentBalance - transactionAmount;
+		result = testObject.withdrawFromAccount(userName, transactionAmount);
+		
+		assertEquals(desiredOutcome, result, 0);
+		
 	}
 	
-	
+	@Test
+	public void testAccountBalanceGetsUpdatedAfterEachDeposit() {
+		double transactionAmount = 1000;
+		double currentBalance = testObject.getAccountBalance(userName);
+		double desiredOutcome = currentBalance + transactionAmount;
+		double result = testObject.depositAmount(userName, transactionAmount);
+		
+		assertEquals(desiredOutcome, result, 0);
+		
+		transactionAmount = 500;
+		currentBalance = testObject.getAccountBalance(userName);
+		desiredOutcome = currentBalance + transactionAmount;
+		result = testObject.depositAmount(userName, transactionAmount);
+		
+		assertEquals(desiredOutcome, result, 0);
+	}
 	
 	// Depositing into account
 	
