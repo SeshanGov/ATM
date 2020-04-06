@@ -105,7 +105,7 @@ public class ATM_Simulation {
 						System.out.println(currentSession.displayAirtimeMenu());
 						try {
 							String transaction = currentSession.validateNetworkProvider(currentSession.getUserInput.nextLine());
-							System.out.println();
+							currentSession.purchaseAirtime();							
 						} catch (IllegalArgumentException e) {
 							System.out.println(e.getMessage());
 						}
@@ -119,10 +119,7 @@ public class ATM_Simulation {
 				continue;
 			}
 			
-			
-			
 		}
-		
 		
 		currentSession.getUserInput.close();
 		System.out.println("END");
@@ -211,6 +208,21 @@ public class ATM_Simulation {
 	public String validateNetworkProvider(String userInput) {
 		if (Arrays.asList(airtimeMenuOptions).contains(userInput)) return userInput;
 		throw new IllegalArgumentException("You have not entered a valid option.");
+	}
+	
+	public void purchaseAirtime() {
+		System.out.println("Please enter the prepaid amount you wish to purchase:");
+		double airtimeAmount = getUserInput.nextDouble();
+		String cellphoneNumber = "";
+		while(cellphoneNumber.length() < 10) {
+			System.out.println("Please enter your 10 digit cell phone number here:");
+			cellphoneNumber = getUserInput.nextLine();
+		}
+		
+		System.out.println("Please wait while we process your request...");
+		System.out.println("Thank you for your patience. Your transaction has been completed successfully.");
+		updateAccountBalance(userName, -airtimeAmount);
+		System.out.println("Airtime to the value of " + airtimeAmount + " has been purchased successfully for cellphone number " + cellphoneNumber);
 	}
 
 }
