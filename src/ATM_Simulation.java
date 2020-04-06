@@ -80,6 +80,9 @@ public class ATM_Simulation {
 		
 		while (currentSession.loggedIn) {
 			
+			currentSession.setUserName(userName);
+			currentSession.setUserPassword(password);
+			currentSession.userAccountBalance = currentSession.getAccountBalance(userName);
 			
 			System.out.println(currentSession.loadMainScreen());
 			String transact = currentSession.getUserInput.nextLine();
@@ -88,8 +91,7 @@ public class ATM_Simulation {
 			if (isValidTransaction) {
 				switch(transact) {
 					case "1":
-						double accountBalance = currentSession.getAccountBalance(userName);
-						System.out.println("Your current account balance is R " + accountBalance);
+						System.out.println("Your current account balance is R " + currentSession.userAccountBalance);
 						break;
 					case "2":
 						System.out.println("Please enter the amount that you would like to withdraw:");
@@ -104,8 +106,9 @@ public class ATM_Simulation {
 						System.out.println("Please enter the amount that you would like to deposit:");
 						Double depositAmount = currentSession.getUserInput.nextDouble();
 						System.out.println("Depositing funds...");
-						
-						System.out.println("Depositing cash...");
+						System.out.println("Thank you for your patience. Your deposit has been made successfully.");
+						currentSession.updateUserAccountBalance(depositAmount);
+						System.out.println("Your new account balance is R " + currentSession.userAccountBalance);
 						break;
 					case "4":
 						System.out.println("Buying airtime...");
