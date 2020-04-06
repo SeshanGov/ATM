@@ -21,7 +21,7 @@ public class ATM_Simulation {
 		this.userName = userName;
 	}
 	
-	private void setUserPassword(String password) {
+	void setUserPassword(String password) {
 		this.password = password;
 	}
 	

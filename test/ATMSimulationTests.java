@@ -80,6 +80,13 @@ public class ATMSimulationTests {
 	}
 	
 	@Test
+	public void testCanUpdatePasswordOnceLoggedIn() {
+		testObject.setUserPassword("myPa$$word");
+		String desiredOutcome = "myPa$$word";
+		assertEquals(desiredOutcome, testObject.password);
+	}
+	
+	@Test
 	public void testWelcomeScreenLoad() {
 		String result = testObject.loadMainScreen();
 		String desiredOutcome = "---------------------------------------------------------------------\n"
