@@ -109,10 +109,14 @@ public class ATM_Simulation {
 					case "3":
 						System.out.println("Please enter the amount that you would like to deposit:");
 						Double depositAmount = currentSession.getUserInput.nextDouble();
-						System.out.println("Depositing funds...");
-						System.out.println("Thank you for your patience. Your deposit has been made successfully.");
-						currentSession.updateUserAccountBalance(depositAmount);
-						System.out.println("Your new account balance is R " + currentSession.userAccountBalance);
+						try {
+							System.out.println("Depositing funds...");
+							currentSession.userAccountBalance = currentSession.depositAmount(userName, depositAmount);
+							System.out.println("Thank you for your patience. Your deposit has been made successfully.");
+							System.out.println("Your new account balance is R " + currentSession.userAccountBalance);
+						} catch (IllegalArgumentException e) {
+							System.out.println(e.getMessage());
+						}
 						break;
 					case "4":
 						System.out.println("Buying airtime...");
