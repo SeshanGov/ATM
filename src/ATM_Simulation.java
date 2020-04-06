@@ -184,20 +184,26 @@ public class ATM_Simulation {
 		int userIndex = Arrays.asList(userNames).indexOf(userName);
 		return accountBalances[userIndex];
 	}
+	
+	public void updateAccountBalance(String userName, double transactionAmount) {
+		int userIndex = Arrays.asList(userNames).indexOf(userName);
+		accountBalances[userIndex] = getAccountBalance(userName) + transactionAmount;
+	}
 
 	public Double withdrawFromAccount(String userName, Double withdrawalAmount) {
 		Double currentBalance = getAccountBalance(userName);
 		if (withdrawalAmount > 0) {
 			if (withdrawalAmount > currentBalance) throw new IllegalArgumentException("Sorry, you do not have sufficient funds in your account to complete this transaction.");
-			return currentBalance - withdrawalAmount;
+			updateAccountBalance(userName, -withdrawalAmount);
+			return getAccountBalance(userName);
 		}
 		throw new IllegalArgumentException("Please note that the withdrawal amount must be greater than zero.");
 	}
 
 	public Double depositAmount(String userName, Double amountToDeposit) {
 		if (amountToDeposit <= 0) throw new IllegalArgumentException("Please note that the deposit amount must be greater than zero.");
-		Double currentBalance = getAccountBalance(userName);
-		return currentBalance += amountToDeposit;
+		updateAccountBalance(userName, amountToDeposit);
+		return getAccountBalance(userName);
 	}
 
 	public String displayAirtimeMenu() {
